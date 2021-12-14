@@ -1,0 +1,30 @@
+h1{
+    padding-top: 15px;
+    text-align: center;
+    color: #CE97B0;
+    font-family: cursive;
+}
+
+div{
+    padding-bottom: 20px;
+}
+
+#content-main{
+    height: 1000px;
+    background-color: #557571;
+}
+
+input{
+    background-color: #F7D1BA;
+}
+
+.padding10{
+    padding: 10px;
+}
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+
+
