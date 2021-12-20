@@ -21,7 +21,24 @@ $type=$_POST['type'];
 $date=$_POST['date'];
 $quantity=$_POST['qty'];
 
-//$insertData=db->prepare('INSERT INTO pipi')
+switch (isset($type)){
+    case "bibi":
+        if (isset($date) && isset($quantity)){
+            $insertBibi=$db->prepare('INSERT INTO bibi(date, qty) VALUES (:date, :qty)');
+            $insertBibi->bindParam('date', $date);
+            $insertBibi->bindParam('qty', $quantity);
+            $insertBibi->execute();
+        }
+        break;
+    case "pipi":
+        header("Location:test.php");
+        break;
+    case "popo":
+
+        break;
+}
+
+
 
 
 //On récupère les pipi dans la DB
