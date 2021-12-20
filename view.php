@@ -88,7 +88,7 @@
                 ?>
                     <tbody id="tbodyPipi" class="table-warning">
                         <th><?php echo $sqlPipiResp['id'] ?></th>
-                        <td><?php echo $sqlPipiResp['date'] ?></td>
+                        <td><?php date('d/m/Y H:i:s', strtotime($sqlPipiResp['date'])) ?></td>
                     </tbody>
                 <?php
                 }
@@ -112,7 +112,7 @@
                 
                 <tbody id="tbodyPopo" class="table-danger">
                     <th><?php echo $sqlPopoResp['id'] ?></th>
-                    <td><?php echo $sqlPopoResp['date'] ?></td>
+                    <td><?php date('d/m/Y H:i:s', strtotime($sqlPopoResp['date'])) ?></td>
                 </tbody>
                 <?php
                 }
