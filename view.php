@@ -22,6 +22,7 @@
 
                 <div class="form-floating padding10">
                     <select name="type" class="form-select" id="inputChoice" aria-label="Sélectionnez un élément" required>
+                        <option selected>Choississez</option>
                         <option value="bibi">Bibi</option>
                         <option value="pipi">Pipi</option>
                         <option value="popo">Popo</option>
@@ -35,7 +36,7 @@
                 </div>
 
                 <div class="form-floating padding10">
-                    <input type="number" min="0" class="form-control" placeholder="en ml" id="inputQty" name="qty" pattern="\d*"></input>
+                    <input type="tel" class="form-control" placeholder="en ml" id="inputQty" name="qty" pattern="\d*"></input>
                     <label for="inputQty">Quantité: (en ml)</label>
                 </div>
 
@@ -64,7 +65,7 @@
                 ?>
                 <tbody id="tbodyBibi" class="table-primary">
                     <th><?php echo $sqlBibiResp['id'] ?></th>
-                    <td><?php echo $sqlBibiResp['date'] ?></td>
+                    <td><?php echo date('d/m/Y H:i:s', strtotime($sqlBibiResp['date'])) ?></td>
                     <td><?php echo $sqlBibiResp['qty'] ?></td>
                 </tbody>
                 <?php

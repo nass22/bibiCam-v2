@@ -25,9 +25,10 @@ $type=$_POST['type'];
 $date=$_POST['date'];
 $quantity=(int)$_POST['qty'];
 
-switch (isset($type)){
+
+switch ($type){
     case "bibi":
-        if (isset($date) && isset($quantity)){
+        if (isset($date) && !empty($quantity)){
             $insertBibi=$db->prepare('INSERT INTO bibi(date, qty) VALUES (:date, :qty)');
             $insertBibi->bindParam('date', $date);
             $insertBibi->bindParam('qty', $quantity);
