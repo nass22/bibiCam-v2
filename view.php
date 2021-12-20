@@ -12,9 +12,9 @@
 
 <body>
     <div id="content-main">
-        <div class="header">
+        
             <h1>La vie de CamCam</h1>
-        </div>
+        
 
         <!-- Contenair Input -->
         <div id="input-contenair">
@@ -59,11 +59,17 @@
                         <th scope="col">Quantité</th>
                     </tr>
                 </thead>
-                <tbody id="tbodyBibi">
-                    <th>1</th>
-                    <td><?php echo $_POST['type'] ?></td>
-                    <td>test</td>
+                <?php
+                while ($sqlBibiResp = $sqlBibiStm->fetch()) {
+                ?>
+                <tbody id="tbodyBibi" class="table-primary">
+                    <th><?php echo $sqlBibiResp['id'] ?></th>
+                    <td><?php echo $sqlBibiResp['date'] ?></td>
+                    <td><?php echo $sqlBibiResp['qty'] ?></td>
                 </tbody>
+                <?php
+                }
+                ?>
             </table>
 
 
@@ -77,11 +83,11 @@
                 </thead>
 
                 <?php
-                while ($sqlResp = $sqlStm->fetch()) {
+                while ($sqlPipiResp = $sqlPipiStm->fetch()) {
                 ?>
-                    <tbody id="tbodyPipi">
-                        <th><?php echo $sqlResp['id'] ?></th>
-                        <td><?php echo $sqlResp['date'] ?></td>
+                    <tbody id="tbodyPipi" class="table-warning">
+                        <th><?php echo $sqlPipiResp['id'] ?></th>
+                        <td><?php echo $sqlPipiResp['date'] ?></td>
                     </tbody>
                 <?php
                 }
@@ -99,10 +105,17 @@
                         <th scope="col">Date</th>
                     </tr>
                 </thead>
-                <tbody id="tbodyPopo">
-                    <th>1</th>
-                    <td>test</td>
+                <?php
+                while ($sqlPopoResp = $sqlPopoStm->fetch()){
+                ?>   
+                
+                <tbody id="tbodyPopo" class="table-danger">
+                    <th><?php echo $sqlPopoResp['id'] ?></th>
+                    <td><?php echo $sqlPopoResp['date'] ?></td>
                 </tbody>
+                <?php
+                }
+                ?>
             </table>
         </div>
         <!-- FIN Contenair Tab -->

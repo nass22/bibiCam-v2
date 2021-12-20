@@ -1,5 +1,5 @@
 h1{
-    padding-top: 15px;
+    padding-top: 20px;
     text-align: center;
     color: #CE97B0;
     font-family: cursive;
@@ -10,7 +10,7 @@ div{
 }
 
 #content-main{
-    height: 1000px;
+    height: auto;
     background-color: #557571;
 }
 
@@ -25,5 +25,4 @@ input{
     display: flex;
     justify-content: center;
 }
-
 

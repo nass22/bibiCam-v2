@@ -1,4 +1,8 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 //On se connecte à la db grâce à PDO
 $servname='localhost';
 $dbname='bibicam';
@@ -15,11 +19,11 @@ try{
     die('Erreur: ' . $e->getMessage());
 }
 
-//On insert les données pipi des inputs dans la db
+//On insert les données bibi/pipi/popo des inputs dans la db
 
 $type=$_POST['type'];
 $date=$_POST['date'];
-$quantity=$_POST['qty'];
+$quantity=(int)$_POST['qty'];
 
 switch (isset($type)){
     case "bibi":
@@ -31,21 +35,36 @@ switch (isset($type)){
         }
         break;
     case "pipi":
-        header("Location:test.php");
+        if (isset($date)){
+            $insertPipi=$db->prepare('INSERT INTO pipi(date) VALUES (:date)');
+            $insertPipi->bindParam('date', $date);
+            $insertPipi->execute();
+        }
         break;
     case "popo":
-
+        if (isset($date)){
+            $insertPopo=$db->prepare('INSERT INTO popo(date) VALUES (:date)');
+            $insertPopo->bindParam('date', $date);
+            $insertPopo->execute();
+        }
         break;
 }
 
-
+//On récupère les bibi dans la DB
+$sqlBibiQuery='SELECT id, date, qty FROM bibi ORDER BY date DESC LIMIT 0,10';
+$sqlBibiStm= $db -> prepare($sqlBibiQuery);
+$sqlBibiStm->execute();
 
 
 //On récupère les pipi dans la DB
-$sqlQuery='SELECT id, date FROM pipi ORDER BY date DESC LIMIT 0,5';
-$sqlStm= $db -> prepare($sqlQuery);
-$sqlStm->execute();
+$sqlPipiQuery='SELECT id, date FROM pipi ORDER BY date DESC LIMIT 0,10';
+$sqlPipiStm= $db -> prepare($sqlPipiQuery);
+$sqlPipiStm->execute();
 
+//On récupère les popo dans la DB
+$sqlPopoQuery='SELECT id, date FROM popo ORDER BY date DESC LIMIT 0,10';
+$sqlPopoStm= $db -> prepare($sqlPopoQuery);
+$sqlPopoStm->execute();
 
 
 
