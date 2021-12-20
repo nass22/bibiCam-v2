@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="form-floating padding10">
-                    <input type="tel" class="form-control" placeholder="en ml" id="inputQty" name="qty" pattern="\d*"></input>
+                    <input type="tel" class="form-control" placeholder="en ml" id="inputQty" name="qty" pattern="\d*"></input> <!-- si fonctionne pas sur tel, changer type="number" min="0" -->
                     <label for="inputQty">Quantité: (en ml)</label>
                 </div>
 
