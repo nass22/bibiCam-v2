@@ -24,8 +24,8 @@
                     <select name="type" class="form-select" id="inputChoice" aria-label="Sélectionnez un élément" required>
                         <option selected>Choississez</option>
                         <option value="bibi">Bibi</option>
-                        <option value="pipi">Pipi</option>
                         <option value="popo">Popo</option>
+                        <option value="pipi">Pipi</option>
                     </select>
                     <label for="inputChoice">Choix Bibi, Pipi ou Popo:</label>
                 </div>
@@ -48,83 +48,89 @@
         </div>
         <!-- FIN Contenair Input -->
 
-        <!-- CARD Contenair -->
+        <!-- INFO Contenair -->
         <div class="contenair d-flex flex-column align-items-center">
             <div class="card bg-warning w-75">
                 <div class="card-body">
                     <h5 class="text-center display-6">Les infos du jour:</h5>
 
-                    <h6 class="paddingTop text-center">Nombre Bibi: </h6>
-                    <p class="pastelRed text-center"><?php echo $sqlNumbBibiResp['count_today'] ?></p>
+                    <h5 class="paddingTop text-center">Nombre Bibi: </h5>
+                    <p class="pastelRed text-center strong"><?php echo $sqlNumbBibiResp['count_today'] ?></p>
                     
-                    <h6 class="text-center">Ml Bibi:</h6>
-                    <p class="pastelRed text-center"><?php echo $sqlSumResp['sum_today'] ?></p>
+                    <h5 class="text-center">ML Bibi:</h5>
+                    <p class="pastelRed text-center strong"><?php echo $sqlSumResp['sum_today'] ?></p>
                 </div>
             </div>
         </div>
-        <!-- FIN CARD Contenair -->
+        <!-- FIN INFO Contenair -->
 
         <!-- Contenair Tab -->
         <div class="d-flex flex-column align-items-center">
 
-            <table class="table w-75 ">
+            <table class="table w-75 text-center">
                 <h3>&#x1F37C; Ses derniers <strong>Bibi:</strong></h3>
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Date</th>
                         <th scope="col">Quantité</th>
+                        <th scope="col">Supprimer</th>
                     </tr>
                 </thead>
                 <?php
                 while ($sqlBibiResp = $sqlBibiStm->fetch()) {
                 ?>
-                <tbody id="tbodyBibi" class="table-primary">
+                <tbody id="tbodyBibi" class="table-primary align-middle">
                     <th><?php echo $sqlBibiResp['id'] ?></th>
                     <td><?php echo date('d/m/Y H:i:s', strtotime($sqlBibiResp['date'])) ?></td>
                     <td><?php echo $sqlBibiResp['qty'] ?></td>
+                    <td><a href="index.php?name=bibi&amp;id=<?php echo $sqlBibiResp['id'] ?>"><img src="src/delete.png" alt="delete img" /></a></td>
                 </tbody>
                 <?php
                 }
                 ?>
             </table>
             
-            <table class="table w-75">
+            <table class="table w-75 text-center">
                 <h3>&#x1F4A9; Ses derniers <strong>Popo:</strong></h3>
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Date</th>
+                        <th scope="col">Supprimer</th>
                     </tr>
                 </thead>
                 <?php
                 while ($sqlPopoResp = $sqlPopoStm->fetch()){
                 ?>   
                 
-                <tbody id="tbodyPopo" class="table-danger">
+                <tbody id="tbodyPopo" class="table-danger align-middle">
                     <th><?php echo $sqlPopoResp['id'] ?></th>
                     <td><?php echo date('d/m/Y H:i:s', strtotime($sqlPopoResp['date'])) ?></td>
+                    <td><a href="index.php?name=popo&amp;id=<?php echo $sqlPopoResp['id'] ?>"><img src="src/delete.png" alt="delete img" /></a></td>
                 </tbody>
                 <?php
                 }
                 ?>
             </table>
 
-            <table class="table w-75">
+            <table class="table w-75 text-center">
                 <h3>&#x1F6BA; Ses derniers <strong>Pipi:</strong></h3>
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Date</th>
+                        <th scope="col">Supprimer</th>
                     </tr>
                 </thead>
 
                 <?php
                 while ($sqlPipiResp = $sqlPipiStm->fetch()) {
                 ?>
-                    <tbody id="tbodyPipi" class="table-warning">
+                    <tbody id="tbodyPipi" class="table-warning align-middle">
                         <th><?php echo $sqlPipiResp['id'] ?></th>
                         <td><?php echo date('d/m/Y H:i:s', strtotime($sqlPipiResp['date'])) ?></td>
+                        <td><a href="index.php?name=pipi&amp;id=<?php echo $sqlPipiResp['id'] ?>"><img src="src/delete.png" alt="delete img" /></a></td>
                     </tbody>
                 <?php
                 }

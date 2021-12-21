@@ -34,3 +34,7 @@ input{
 .paddingTop{
     padding-top: 3px;
 }
+
+.strong{
+    font-weight: bold;
+}

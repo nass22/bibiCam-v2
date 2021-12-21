@@ -1,10 +1,10 @@
 <?php
 
-/*
+
 //Permet de display les erreurs
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
-*/
+
 
 //On se connecte à la db grâce à PDO
 $servname='localhost';
@@ -88,6 +88,36 @@ $sqlNumbBibiStm= $db -> prepare($sqlNumberBibiQuery);
 $sqlNumbBibiStm->bindParam('date', $todayDate);
 $sqlNumbBibiStm->execute();
 $sqlNumbBibiResp=$sqlNumbBibiStm->fetch();
+
+//On supprime un élément
+$table=$_GET['name'];
+$id=$_GET['id'];
+
+if (!empty($table) && !empty($id)){
+    switch ($table){
+        case 'bibi':
+            $sqlDeleteQuery='DELETE FROM bibi WHERE id = :id';
+            $sqlDeleteStm=$db->prepare($sqlDeleteQuery);
+            $sqlDeleteStm->bindParam('id', $id);
+            $sqlDeleteStm->execute();
+            header("Location:index.php");
+            break;
+        case 'pipi':
+            $sqlDeleteQuery='DELETE FROM pipi WHERE id = :id';
+            $sqlDeleteStm=$db->prepare($sqlDeleteQuery);
+            $sqlDeleteStm->bindParam('id', $id);
+            $sqlDeleteStm->execute();
+            header("Location:index.php");
+            break;
+        case 'popo':
+            $sqlDeleteQuery='DELETE FROM popo WHERE id = :id';
+            $sqlDeleteStm=$db->prepare($sqlDeleteQuery);
+            $sqlDeleteStm->bindParam('id', $id);
+            $sqlDeleteStm->execute();
+            header("Location:index.php");
+            break;
+    } 
+}
 
 
 require('view.php');
