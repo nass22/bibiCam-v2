@@ -1,10 +1,10 @@
 <?php
 
-
+/*
 //Permet de display les erreurs
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
-
+*/
 
 //On se connecte à la db grâce à PDO
 $servname='localhost';
