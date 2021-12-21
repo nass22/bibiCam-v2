@@ -10,8 +10,8 @@
     <title>Bibi CamCam</title>
 </head>
 
-<body>
-    <div id="content-main">
+<body >
+    <div class="backgroundCol">
         
             <h1>La vie de CamCam</h1>
         
@@ -48,6 +48,22 @@
         </div>
         <!-- FIN Contenair Input -->
 
+        <!-- CARD Contenair -->
+        <div class="contenair d-flex flex-column align-items-center">
+            <div class="card bg-warning w-75">
+                <div class="card-body">
+                    <h5 class="text-center display-6">Les infos du jour:</h5>
+
+                    <h6 class="paddingTop text-center">Nombre Bibi: </h6>
+                    <p class="pastelRed text-center"><?php echo $sqlNumbBibiResp['count_today'] ?></p>
+                    
+                    <h6 class="text-center">Ml Bibi:</h6>
+                    <p class="pastelRed text-center"><?php echo $sqlSumResp['sum_today'] ?></p>
+                </div>
+            </div>
+        </div>
+        <!-- FIN CARD Contenair -->
+
         <!-- Contenair Tab -->
         <div class="d-flex flex-column align-items-center">
 
@@ -72,7 +88,27 @@
                 }
                 ?>
             </table>
-
+            
+            <table class="table w-75">
+                <h3>&#x1F4A9; Ses derniers <strong>Popo:</strong></h3>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <?php
+                while ($sqlPopoResp = $sqlPopoStm->fetch()){
+                ?>   
+                
+                <tbody id="tbodyPopo" class="table-danger">
+                    <th><?php echo $sqlPopoResp['id'] ?></th>
+                    <td><?php echo date('d/m/Y H:i:s', strtotime($sqlPopoResp['date'])) ?></td>
+                </tbody>
+                <?php
+                }
+                ?>
+            </table>
 
             <table class="table w-75">
                 <h3>&#x1F6BA; Ses derniers <strong>Pipi:</strong></h3>
@@ -88,7 +124,7 @@
                 ?>
                     <tbody id="tbodyPipi" class="table-warning">
                         <th><?php echo $sqlPipiResp['id'] ?></th>
-                        <td><?php date('d/m/Y H:i:s', strtotime($sqlPipiResp['date'])) ?></td>
+                        <td><?php echo date('d/m/Y H:i:s', strtotime($sqlPipiResp['date'])) ?></td>
                     </tbody>
                 <?php
                 }
@@ -98,26 +134,7 @@
             </table>
 
 
-            <table class="table w-75">
-                <h3>&#x1F4A9; Ses derniers <strong>Popo:</strong></h3>
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Date</th>
-                    </tr>
-                </thead>
-                <?php
-                while ($sqlPopoResp = $sqlPopoStm->fetch()){
-                ?>   
-                
-                <tbody id="tbodyPopo" class="table-danger">
-                    <th><?php echo $sqlPopoResp['id'] ?></th>
-                    <td><?php date('d/m/Y H:i:s', strtotime($sqlPopoResp['date'])) ?></td>
-                </tbody>
-                <?php
-                }
-                ?>
-            </table>
+            
         </div>
         <!-- FIN Contenair Tab -->
 

@@ -9,8 +9,8 @@ div{
     padding-bottom: 20px;
 }
 
-#content-main{
-    height: auto;
+.backgroundCol{
+    
     background-color: #557571;
 }
 
@@ -21,8 +21,16 @@ input{
 .padding10{
     padding: 10px;
 }
+
 .center{
     display: flex;
     justify-content: center;
 }
 
+.pastelRed{
+    color:#F05454;
+}
+
+.paddingTop{
+    padding-top: 3px;
+}

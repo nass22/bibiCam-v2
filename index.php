@@ -71,6 +71,25 @@ $sqlPopoStm= $db -> prepare($sqlPopoQuery);
 $sqlPopoStm->execute();
 
 
+//On set le fuseau 
+date_default_timezone_set('Europe/Paris');
+$todayDate=date('Y-m-d');
+
+//On calcule le nombre de ml du jour
+$sqlSumQuery='SELECT SUM(qty) AS sum_today FROM bibi WHERE date BETWEEN :date - INTERVAL 1 DAY AND :date + INTERVAL 1 DAY';
+$sqlSumStm= $db -> prepare($sqlSumQuery);
+$sqlSumStm->bindParam('date', $todayDate);
+$sqlSumStm->execute();
+$sqlSumResp=$sqlSumStm->fetch();
+
+//On cacule le nbre de bibi du jour
+$sqlNumberBibiQuery='SELECT COUNT(qty) AS count_today FROM bibi WHERE date BETWEEN :date - INTERVAL 1 DAY AND :date + INTERVAL 1 DAY';
+$sqlNumbBibiStm= $db -> prepare($sqlNumberBibiQuery);
+$sqlNumbBibiStm->bindParam('date', $todayDate);
+$sqlNumbBibiStm->execute();
+$sqlNumbBibiResp=$sqlNumbBibiStm->fetch();
+
+
 require('view.php');
 
 ?>
